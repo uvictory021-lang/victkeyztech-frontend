@@ -299,6 +299,17 @@
 
   document.addEventListener("DOMContentLoaded", typeEffect);
 </script>
+  <script>
+  const menu = document.querySelector('.menu');   // your dropdown container
+  const toggleBtn = document.querySelector('.menu-toggle'); // your hamburger button
+
+  document.addEventListener('click', function(event) {
+    if (!menu.contains(event.target) && !toggleBtn.contains(event.target)) {
+      menu.classList.remove('open'); // closes the menu if you click outside
+    }
+  });
+  </script>
 </body>
 
 </html>
+
