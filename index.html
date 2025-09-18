@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VictKeyzTech Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #37a17eff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .spinner {
+      border: 6px solid #aa0caaff;
+      border-top: 6px solid cyan;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: cyan;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.9);
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin: 10px 0;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: cyan; }
+
+    .hamburger {
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .show { display: flex; }
+
+    /* Content */
+    .content {
+      padding: 50px 20px;
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid cyan;
+      object-fit: cover;
+      box-shadow: 0px 0px 20px cyan;
+      margin-bottom: 20px;
+    }
+
+    .logo-container {
+  text-align: center; /* keeps it neat */
+}
+
+.logo {
+  width: 180px;   /* adjust size for your header */
+  animation: glowPulse 2.5s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    filter: drop-shadow(0 0 6px #00ff66)
+            drop-shadow(0 0 12px #00ff66);
+  }
+  to {
+    filter: drop-shadow(0 0 18px #00ffaa)
+            drop-shadow(0 0 36px #00ff66);
+  }
+}.logo-container {
+  text-align: center; /* keeps it neat */
+}
+
+.logo {
+  width: 180px;   /* adjust size for your header */
+  animation: glowPulse 2.5s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    filter: drop-shadow(0 0 6px #00ff66)
+            drop-shadow(0 0 12px #00ff66);
+  }
+  to {
+    filter: drop-shadow(0 0 18px #00ffaa)
+            drop-shadow(0 0 36px #00ff66);
+  }
+}.logo-container {
+  text-align: center; /* keeps it neat */
+}
+
+.logo {
+  width: 180px;   /* adjust size for your header */
+  animation: glowPulse 2.5s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    filter: drop-shadow(0 0 6px #00ff66)
+            drop-shadow(0 0 12px #00ff66);
+  }
+  to {
+    filter: drop-shadow(0 0 18px #00ffaa)
+            drop-shadow(0 0 36px #00ff66);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<audio controls autoplay loop>
+  <source src="music/mymusic.mp3"type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div class="music-btn" id=musicBtn"musicBtn"title="Play/Pause Music"></div>
+<audio id="bg-music" loop>
+  <source src="music/mymusic.mp3"type="audio/mpeg">
+  </audio> 
+ 
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="assets/images/victkeyztech-green.png"alt="victkeyzTech Logo"class="logo">
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav id="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="content">
+    <img src="assets/images/profile.png" alt="VictKeyzTech" class="profile-pic">
+    <h1>Welcome to My Portfolio</h1>
+    <p>I build modern full-stack web applications with <b>PHP, MySQL, JavaScript</b> and more.</p>
+  </div>
+
+  <!-- JS -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    // Loader + SweetAlert
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById("loader").style.display = "none";
+
+        // Greeting based on time
+        let hours = new Date().getHours();
+        let greeting = "Hello";
+
+        if (hours < 12) {
+          greeting = "Good Morning ☀️";
+        } else if (hours < 18) {
+          greeting = "Good Afternoon 🌞";
+        } else {
+          greeting = "Good Evening 🌙"; 
+        }
+
+        Swal.fire({
+          title: greeting,
+          text: "Welcome to VictKeyzTech Portfolio✅",
+          icon: "info",
+          showConfirmButton: true,
+          timer: 5000
+        });
+
+      }, 3000); // Loader delay
+    };
+
+  </script>
+
+  <!-- Floating Typing Quote -->
+<div class="quote-box">
+  <span id="typed-quote"></span>
+</div>
+
+<style>
+  .quote-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 255, 128, 0.1); /* light green glow */
+    border: 1px solid #00ff80;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #00ff80;
+    box-shadow: 0 0 12px #00ff80;
+    white-space: nowrap;
+    animation: glowPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes glowPulse {
+    0% {
+      box-shadow: 0 0 8px #00ff80;
+    }
+    50% {
+      box-shadow: 0 0 18px #00ff80, 0 0 28px #00ff80;
+    }
+    100% {
+      box-shadow: 0 0 8px #00ff80;
+    }
+  }
+</style>
+
+<script>
+  const quotes = [
+    "Code👨‍💻 is like humor. When you have to explain it, it’s bad.",
+    "Your only limit is your imagination.",
+    "thinking is programming and programming is thinking✨."
+  ];
+
+  let i = 0;   // which quote
+  let j = 0;   // which letter
+  let currentQuote = "";
+  let isDeleting = false;
+
+  function typeEffect() {
+    currentQuote = quotes[i];
+    let displayText = currentQuote.substring(0, j);
+
+    document.getElementById("typed-quote").innerText = displayText;
+
+    if (!isDeleting && j < currentQuote.length) {
+      j++;
+      setTimeout(typeEffect, 100);
+    } else if (isDeleting && j > 0) {
+      j--;
+      setTimeout(typeEffect, 50);
+    } else {
+      if (!isDeleting) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1500); // pause before delete
+      } else {
+        isDeleting = false;
+        i = (i + 1) % quotes.length;
+        setTimeout(typeEffect, 300); // pause before next quote
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", typeEffect);
+</script>
+</body>
+</html>
