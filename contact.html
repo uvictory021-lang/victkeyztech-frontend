@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - VictKeyzTech</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="htps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     body {
       margin: 0;
@@ -15,73 +16,67 @@
       text-align: center;
       min-height: 100vh;
     }
-    header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:rgba(0,0,0,0.4); }
-    .logo { font-size:1.5rem; font-weight:bold; color:cyan; }
-    nav { display:none; flex-direction:column; background:rgba(0,0,0,0.9); position:absolute; top:60px; right:20px; border-radius:10px; padding:15px; }
+
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 30px; background:rgba(0,0,0,0.4);
+    }
+
+    nav { display:none; flex-direction:column; background:rgba(0,0,0,0.9);
+      position:absolute; top:60px; right:20px; border-radius:10px; padding:15px; }
     nav a { text-decoration:none; color:white; margin:10px 0; font-size:1.1rem; transition:color 0.3s; }
     nav a:hover { color:cyan; }
     .hamburger { cursor:pointer; font-size:1.8rem; color:white; }
     .show { display:flex; }
+
     .content { padding:40px 20px; }
     .links { display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin-top:20px; }
     .links a { background:cyan; color:black; padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s; }
     .links a:hover { background:white; }
 
-    .logo-container {
-  text-align: center; /* keeps it neat */
-}
+    .logo-container { text-align: center; }
+    .logo { width: 180px; animation: glowPulse 2.5s infinite alternate; }
 
-.logo {
-  width: 180px;   /* adjust size for your header */
-  animation: glowPulse 2.5s infinite alternate;
-}
+    @keyframes glowPulse {
+      from { filter: drop-shadow(0 0 6px #00ff66) drop-shadow(0 0 12px #00ff66); }
+      to { filter: drop-shadow(0 0 18px #00ffaa) drop-shadow(0 0 36px #00ff66); }
+    }
 
-@keyframes glowPulse {
-  from {
-    filter: drop-shadow(0 0 6px #00ff66)
-            drop-shadow(0 0 12px #00ff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #00ffaa)
-            drop-shadow(0 0 36px #00ff66);
-  }
-}.logo-container {
-  text-align: center; /* keeps it neat */
-}
+    /* Contact Form Styling */
+    #contact {
+      margin-top: 40px;
+    }
 
-.logo {
-  width: 180px;   /* adjust size for your header */
-  animation: glowPulse 2.5s infinite alternate;
-}
+    form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-@keyframes glowPulse {
-  from {
-    filter: drop-shadow(0 0 6px #00ff66)
-            drop-shadow(0 0 12px #00ff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #00ffaa)
-            drop-shadow(0 0 36px #00ff66);
-  }
-}.logo-container {
-  text-align: center; /* keeps it neat */
-}
+    input, textarea, button {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
 
-.logo {
-  width: 180px;   /* adjust size for your header */
-  animation: glowPulse 2.5s infinite alternate;
-}
+    input, textarea {
+      width: 100%;
+    }
 
-@keyframes glowPulse {
-  from {
-    filter: drop-shadow(0 0 6px #00ff66)
-            drop-shadow(0 0 12px #00ff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #00ffaa)
-            drop-shadow(0 0 36px #00ff66);
-  }
-}
+    button {
+      background: cyan;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: white;
+    }
   </style>
 </head>
 <body>
@@ -89,7 +84,7 @@
   <!-- Header -->
   <header>
     <div class="logo-container">
-      <img src="assets/images/victkeyztech-green.png"alt="victkeyzTech Logo"class="logo">
+      <img src="assets/images/victkeyztech-green.png" alt="victkeyzTech Logo" class="logo">
     </div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
     <nav id="menu">
@@ -117,21 +112,28 @@
   </div>
 
   <section id="contact">
-  <h2>direct messages👇</h2>
-  <!-- contact.html -->
-
-  <form action="https://yourphphost.000webhostapp.com/contacts.php" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required><br>
-    <input type="email" name="email" placeholder="Your Email" required><br>
-    <textarea name="message" placeholder="Your Message"></textarea><br>
-    <button type="submit">Send</button>
-  </form>
+    <h2>Direct Message 👇</h2>
+    <form action="https://yourphphost.000webhostapp.com/contacts.php" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
   <script>
-    function toggleMenu() {
+   function toggleMenu() {
       document.getElementById("menu").classList.toggle("show");
     }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById("menu");
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.classList.remove("show");
+      }
+    });
   </script>
 </body>
 </html>
