@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skills - VictKeyzTech</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="htps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
@@ -15,56 +15,75 @@
       text-align: center;
       min-height: 100vh;
     }
-    header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:rgba(0,0,0,0.4); }
-    .logo { font-size:1.5rem; font-weight:bold; color:cyan; }
-    nav { display:none; flex-direction:column; background:rgba(0,0,0,0.9); position:absolute; top:60px; right:20px; border-radius:10px; padding:15px; }
-    nav a { text-decoration:none; color:white; margin:10px 0; font-size:1.1rem; transition:color 0.3s; }
+
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 30px;
+      background:rgba(0,0,0,0.4);
+    }
+
+    nav {
+      display:none;
+      flex-direction:column;
+      background:rgba(0,0,0,0.9);
+      position:absolute;
+      top:60px;
+      right:20px;
+      border-radius:10px;
+      padding:15px;
+    }
+
+    nav a {
+      text-decoration:none;
+      color:white;
+      margin:10px 0;
+      font-size:1.1rem;
+      transition:color 0.3s;
+    }
     nav a:hover { color:cyan; }
+
     .hamburger { cursor:pointer; font-size:1.8rem; color:white; }
     .show { display:flex; }
+
     .content { padding:40px 20px; }
-    .skills { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; margin-top:30px; }
-    .skill-card { background:rgba(255,255,255,0.1); padding:20px; border-radius:12px; transition:transform 0.3s; }
-    .skill-card:hover { transform:translateY(-8px); background:rgba(0,0,0,0.6); }
+
+    .skills {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:20px;
+      margin-top:30px;
+    }
+
+    .skill-card {
+      background:rgba(255,255,255,0.1);
+      padding:20px;
+      border-radius:12px;
+      transition:transform 0.3s;
+    }
+    .skill-card:hover {
+      transform:translateY(-8px);
+      background:rgba(0,0,0,0.6);
+    }
+
     .skill-icon { font-size:2.5rem; margin-bottom:10px; }
 
-    .logo-container {
-  text-align: center; /* keeps it neat */
-}
+    /* Logo animation + header consistency */
+    .logo-container { display:flex; align-items:center; gap:10px; }
+    .logo { width:50px; animation: glowPulse 2.5s infinite alternate; }
+    .brand-text { font-size:1.3rem; font-weight:bold; color:cyan; }
 
-.logo {
-  width: 180px;   /* adjust size for your header */
-  animation: glowPulse 2.5s infinite alternate;
-}
-
-@keyframes glowPulse {
-  from {
-    filter: drop-shadow(0 0 6px #00ff66)
-            drop-shadow(0 0 12px #00ff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #00ffaa)
-            drop-shadow(0 0 36px #00ff66);
-  }
-}.logo-container {
-  text-align: center; /* keeps it neat */
-}
-
-.logo {
-  width: 180px;   /* adjust size for your header */
-  animation: glowPulse 2.5s infinite alternate;
-}
-
-@keyframes glowPulse {
-  from {
-    filter: drop-shadow(0 0 6px #00ff66)
-            drop-shadow(0 0 12px #00ff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #00ffaa)
-            drop-shadow(0 0 36px #00ff66);
-  }
-}
+    @keyframes glowPulse {
+      from {
+        filter: drop-shadow(0 0 6px #00ff66)
+                drop-shadow(0 0 12px #00ff66);
+      }
+      to {
+        filter: drop-shadow(0 0 18px #00ffaa)
+                drop-shadow(0 0 36px #00ff66);
+      }
+    }
   </style>
 </head>
 <body>
@@ -72,7 +91,8 @@
   <!-- Header -->
   <header>
     <div class="logo-container">
-      <img src="assets/images/victkeyztech-green.png"alt="victkeyzTech Logo"class="logo">
+      <img src="assets/images/victkeyztech-green.png" alt="VictKeyzTech Logo" class="logo">
+      <span class="brand-text">VictKeyzTech</span>
     </div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
     <nav id="menu">
@@ -128,6 +148,16 @@
     function toggleMenu() {
       document.getElementById("menu").classList.toggle("show");
     }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById("menu");
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.classList.remove("show");
+      }
+    });
+    
   </script>
 
 </body>
