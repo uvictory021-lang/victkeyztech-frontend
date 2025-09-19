@@ -15,15 +15,42 @@
       text-align: center;
       min-height: 100vh;
     }
-    header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:rgba(0,0,0,0.4); }
-    .logo { font-size:1.5rem; font-weight:bold; color:cyan; }
-    nav { display:none; flex-direction:column; background:rgba(0,0,0,0.9); position:absolute; top:60px; right:20px; border-radius:10px; padding:15px; }
-    nav a { text-decoration:none; color:white; margin:10px 0; font-size:1.1rem; transition:color 0.3s; }
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 30px;
+      background:rgba(0,0,0,0.4);
+    }
+    nav {
+      display:none;
+      flex-direction:column;
+      background:rgba(0,0,0,0.9);
+      position:absolute;
+      top:60px;
+      right:20px;
+      border-radius:10px;
+      padding:15px;
+    }
+    nav a {
+      text-decoration:none;
+      color:white;
+      margin:10px 0;
+      font-size:1.1rem;
+      transition:color 0.3s;
+    }
     nav a:hover { color:cyan; }
     .hamburger { cursor:pointer; font-size:1.8rem; color:white; }
     .show { display:flex; }
+
     .content { padding:40px 20px; }
-    .projects { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:25px; margin-top:30px; }
+
+    .projects {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:25px;
+      margin-top:30px;
+    }
     .card {
       background:rgba(255,255,255,0.1);
       padding:20px;
@@ -51,47 +78,30 @@
       font-weight:bold;
       font-size:0.9rem;
       transition:0.3s;
-      display:flex; align-items:center; gap:5px;
+      display:flex;
+      align-items:center;
+      gap:5px;
     }
     .links a:hover { background:white; }
 
-    .logo-container {
-  text-align: center; /* keeps it neat */
-}
+    /* Logo Animation */
+    .logo-container { display:flex; align-items:center; gap:10px; }
+    .logo {
+      width: 50px;
+      animation: glowPulse 2.5s infinite alternate;
+    }
+    .brand-text { font-size:1.3rem; font-weight:bold; color:cyan; }
 
-.logo {
-  width: 180px;   /* adjust size for your header */
-  animation: glowPulse 2.5s infinite alternate;
-}
-
-@keyframes glowPulse {
-  from {
-    filter: drop-shadow(0 0 6px #00ff66)
-            drop-shadow(0 0 12px #00ff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #00ffaa)
-            drop-shadow(0 0 36px #00ff66);
-  }
-}.logo-container {
-  text-align: center; /* keeps it neat */
-}
-
-.logo {
-  width: 180px;   /* adjust size for your header */
-  animation: glowPulse 2.5s infinite alternate;
-}
-
-@keyframes glowPulse {
-  from {
-    filter: drop-shadow(0 0 6px #00ff66)
-            drop-shadow(0 0 12px #00ff66);
-  }
-  to {
-    filter: drop-shadow(0 0 18px #00ffaa)
-            drop-shadow(0 0 36px #00ff66);
-  }
-}
+    @keyframes glowPulse {
+      from {
+        filter: drop-shadow(0 0 6px #00ff66)
+                drop-shadow(0 0 12px #00ff66);
+      }
+      to {
+        filter: drop-shadow(0 0 18px #00ffaa)
+                drop-shadow(0 0 36px #00ff66);
+      }
+    }
   </style>
 </head>
 <body>
@@ -99,7 +109,8 @@
   <!-- Header -->
   <header>
     <div class="logo-container">
-      <img src="assets/images/victkeyztech-green.png"alt="victkeyzTech Logo"class="logo">
+      <img src="assets/images/victkeyztech-green.png" alt="VictKeyzTech Logo" class="logo">
+      <span class="brand-text">VictKeyzTech</span>
     </div>
     <div class="hamburger" onclick="toggleMenu()">☰</div>
     <nav id="menu">
@@ -117,7 +128,6 @@
     <p>Here are some of my works 👇</p>
 
     <div class="projects">
-     
       <!-- Project 1 -->
       <div class="card">
         <img src="assets/images/student-app.png" alt="Student Management App">
@@ -150,14 +160,22 @@
           <a href="https://victkeyztech.000webhostapp.com" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
         </div>
       </div>
-
     </div>
   </div>
 
   <script>
-    function toggleMenu() {
+   function toggleMenu() {
       document.getElementById("menu").classList.toggle("show");
     }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById("menu");
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.classList.remove("show");
+      }
+    });
   </script>
 
 </body>
